@@ -145,6 +145,7 @@ export const App = () => {
 
         if (value) {
             const preparedDate = moment(value).format(BACKEND_FORMAT)
+            setError(false)
 
             fetchData(LEFT_ID, preparedDate)
                 .then(data => {
@@ -176,7 +177,7 @@ export const App = () => {
                 <Title level={2}>Веранда №1</Title>
                 <Title level={4}>{date} <br/> {time}</Title>
                 <StyledWrapper>
-                    <StyledCard error={errorLeft && 'true'} title="Левая Лента">{left}</StyledCard>
+                    <StyledCard error={errorLeft} title="Левая Лента">{left}</StyledCard>
                     <StyledCard error={errorRight} title="Правая Лента">{right}</StyledCard>
                 </StyledWrapper>
 
@@ -185,8 +186,8 @@ export const App = () => {
                     <br/>
                     <DatePicker onChange={handleChange} format={'DD/MM/YYYY'}/>
                     <StyledWrapper>
-                        <StyledCard title="Левая Лента">{pastLeft}</StyledCard>
-                        <StyledCard title="Правая Лента">{pastRight}</StyledCard>
+                        <StyledCard error={error} title="Левая Лента">{pastLeft}</StyledCard>
+                        <StyledCard error={error} title="Правая Лента">{pastRight}</StyledCard>
                     </StyledWrapper>
                 </StyledForm>
                 {error && <StyledError>Что-то пошло не так, свяжитесь с поддержкой.</StyledError>}
