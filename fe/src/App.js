@@ -10,8 +10,8 @@ moment.locale('ru')
 
 
 const BACKEND_FORMAT = 'YYYY-MM-DD'
-const LEFT_ID = 0
-const RIGHT_ID = 1
+const LEFT_ID = 1
+const RIGHT_ID = 0
 
 
 
@@ -134,7 +134,7 @@ export const App = () => {
 
 
     const fetchData = (id, date) => {
-        return axios.post('http://localhost:3001/getCount', {
+        return axios.post('http://localhost:5000/getCount', {
             "conveyor_id": id,
             "date": date
         })
